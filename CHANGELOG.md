@@ -1,3 +1,35 @@
+### 3.1.4
+- Negligible DOM XSS false positives
+- x10 Faster crawling by
+    - Removing additional request for detecting DOM XSS
+    - Skipping testing of a parameter multiple times
+
+### 3.1.3
+- Removed browser engine emulation
+- Fixed a few bugs
+- Added a plugin to scan for outdated JS libraries
+- Improved crawling and DOM scanning
+
+### 3.1.2
+- Fixed POST data handling
+- Support for JSON POST data
+- Support for URL rewriting
+- Cleaner crawling dashboard
+- No more weird characters while scanning DOM
+- Better DOM XSS scanning
+- Handle unicode while writing to file
+- Handle connection reset
+- Added ability to add headers from command line
+- Fixed issue which caused `foundParams` to not be tested
+
+### 3.1.1
+- Fixed a build breaking typo
+
+### 3.1.0
+- Various minor enhancements and bug fixes
+- Browser engine integration for zero false positives
+- Coverage of event handler context
+
 ### 3.0.5
 
 - Fixed a bug in HTML Parser

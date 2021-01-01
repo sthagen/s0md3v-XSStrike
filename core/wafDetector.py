@@ -1,11 +1,15 @@
 import json
 import re
+import sys
 
 from core.requester import requester
+from core.log import setup_logger
+
+logger = setup_logger(__name__)
 
 
 def wafDetector(url, params, headers, GET, delay, timeout):
-    with open('./db/wafSignatures.json', 'r') as file:
+    with open(sys.path[0] + '/db/wafSignatures.json', 'r') as file:
         wafSignatures = json.load(file)
     # a payload which is noisy enough to provoke the WAF
     noise = '<script>alert("XSS")</script>'
@@ -15,6 +19,9 @@ def wafDetector(url, params, headers, GET, delay, timeout):
     page = response.text
     code = str(response.status_code)
     headers = str(response.headers)
+    logger.debug('Waf Detector code: {}'.format(code))
+    logger.debug_json('Waf Detector headers:', response.headers)
+
     if int(code) >= 400:
         bestMatch = [0, None]
         for wafName, wafSignature in wafSignatures.items():

@@ -49,6 +49,7 @@ Apart from that, XSStrike has crawling, fuzzing, parameter discovery, WAF detect
 - Context analysis
 - Configurable core
 - WAF detection & evasion
+- Outdated JS lib scanning
 - Intelligent payload generator
 - Handmade HTML & JavaScript parser
 - Powerful fuzzing engine
@@ -68,8 +69,7 @@ Apart from that, XSStrike has crawling, fuzzing, parameter discovery, WAF detect
 - [What's up with Blind XSS?](https://github.com/s0md3v/XSStrike/wiki/FAQ#whats-up-with-blind-xss)
 - [Why XSStrike boasts that it is the most advanced XSS detection suite?](https://github.com/s0md3v/XSStrike/wiki/FAQ#why-xsstrike-boasts-that-it-is-the-most-advanced-xss-detection-suite)
 - [I like the project, what enhancements and features I can expect in future?](https://github.com/s0md3v/XSStrike/wiki/FAQ#i-like-the-project-what-enhancements-and-features-i-can-expect-in-future)
-- [How does XSStrike decide if the injection was successful without a browser engine?](https://github.com/s0md3v/XSStrike/wiki/FAQ#how-does-xsstrike-decide-if-the-injection-was-successful-without-a-browser-engine)
-- [Does that mean it doesn't have false negatives or false positives?](https://github.com/s0md3v/XSStrike/wiki/FAQ#does-that-mean-it-doesnt-have-false-negatives-or-false-positives)
+- [What's the false positive/negative rate?](https://github.com/s0md3v/XSStrike/wiki/FAQ#whats-the-false-positivenegative-rate)
 - [Tool xyz works against the target, while XSStrike doesn't!](https://github.com/s0md3v/XSStrike/wiki/FAQ#tool-xyz-works-against-the-target-while-xsstrike-doesnt)
 - [Can I copy it's code?](https://github.com/s0md3v/XSStrike/wiki/FAQ#can-i-copy-its-code)
 - [What if I want to embed it into a proprietary software?](https://github.com/s0md3v/XSStrike/wiki/FAQ#what-if-i-want-to-embed-it-into-a-proprietary-software)
@@ -102,4 +102,5 @@ Ways to contribute
 
 Licensed under the GNU GPLv3, see [LICENSE](LICENSE) for more information.
 
-The WAF signatures in `/db/wafSignatures.json` are taken & modified from [sqlmap](https://github.com/sqlmapproject/sqlmap). I extracted them from sqlmap's waf detection modules which can found [here](https://github.com/sqlmapproject/sqlmap/blob/master/waf/) and converted them to JSON.
+The WAF signatures in `/db/wafSignatures.json` are taken & modified from [sqlmap](https://github.com/sqlmapproject/sqlmap). I extracted them from sqlmap's waf detection modules which can found [here](https://github.com/sqlmapproject/sqlmap/blob/master/waf/) and converted them to JSON.\
+`/plugins/retireJS.py` is a modified version of [retirejslib](https://github.com/FallibleInc/retirejslib/).
