@@ -6,7 +6,7 @@ from core.colors import end, red, white, bad, info
 
 # Just a fancy ass banner
 print('''%s
-\tXSStrike %sv3.1.4
+\tXSStrike %sv3.1.5
 %s''' % (red, white, end))
 
 try:
@@ -17,7 +17,10 @@ try:
     except ImportError:
         import os
         print ('%s fuzzywuzzy isn\'t installed, installing now.' % info)
-        os.system('pip3 install fuzzywuzzy')
+        ret_code = os.system('pip3 install fuzzywuzzy')
+        if(ret_code != 0):
+            print('%s fuzzywuzzy installation failed.' % bad)
+            quit()
         print ('%s fuzzywuzzy has been installed, restart XSStrike.' % info)
         quit()
 except ImportError:  # throws error in python2
@@ -46,8 +49,6 @@ parser.add_argument('--timeout', help='timeout',
                     dest='timeout', type=int, default=core.config.timeout)
 parser.add_argument('--proxy', help='use prox(y|ies)',
                     dest='proxy', action='store_true')
-parser.add_argument('--params', help='find params',
-                    dest='find', action='store_true')
 parser.add_argument('--crawl', help='crawl',
                     dest='recursive', action='store_true')
 parser.add_argument('--json', help='treat post data as json',
@@ -92,7 +93,6 @@ fuzz = args.fuzz
 update = args.update
 timeout = args.timeout
 proxy = args.proxy
-find = args.find
 recursive = args.recursive
 args_file = args.args_file
 args_seeds = args.args_seeds
@@ -171,7 +171,7 @@ elif not recursive and not args_seeds:
     if args_file:
         bruteforcer(target, paramData, payloadList, encoding, headers, delay, timeout)
     else:
-        scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, skip)
+        scan(target, paramData, encoding, headers, delay, timeout, skipDOM, skip)
 else:
     if target:
         seedList.append(target)

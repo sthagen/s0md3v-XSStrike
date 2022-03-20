@@ -2,7 +2,7 @@ import copy
 import re
 
 import core.config
-from core.colors import red, good, green, end
+from core.colors import green, end
 from core.config import xsschecker
 from core.filterChecker import filterChecker
 from core.generator import generator
@@ -43,7 +43,7 @@ def crawl(scheme, host, main_url, form, blindXSS, blindPayload, headers, delay, 
                                 url, paramsCopy, headers, GET, delay, timeout)
                             occurences = htmlParser(response, encoding)
                             positions = occurences.keys()
-                            efficiencies = filterChecker(
+                            occurences = filterChecker(
                                 url, paramsCopy, headers, GET, delay, occurences, timeout, encoding)
                             vectors = generator(occurences, response.text)
                             if vectors:
